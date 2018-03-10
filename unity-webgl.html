@@ -1,0 +1,49 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="UnityLoader.html">
+
+<dom-module id="unity-webgl">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[placeHolder]]!</h2>
+    <div id="UnityContent"></div>
+  </template>
+
+  <script>
+    /**
+     * `unity-webgl`
+     * an element to play Unity generated WebGL content
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class UnityWebgl extends Polymer.Element {
+      static get is() { return 'unity-webgl'; }
+      static get properties() {
+        return {
+          webGlContent: {
+            type: String,
+            value: 'content'
+          },
+          placeHolder: {
+            type: String,
+            value: 'default'
+          },
+        };
+      }
+      ready() {
+        super.ready();
+        var contentpath=this.webGlContent+'/'+this.webGlContent+'.json';
+        var gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
+
+      }
+    }
+
+ 
+    window.customElements.define(UnityWebgl.is, UnityWebgl);
+  </script>
+</dom-module>
