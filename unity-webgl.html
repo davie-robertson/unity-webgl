@@ -8,7 +8,6 @@
         display: block;
       }
     </style>
-    <h2>Hello [[placeHolder]]!</h2>
     <div id="UnityContent"></div>
   </template>
 
@@ -23,23 +22,43 @@
      */
     class UnityWebgl extends Polymer.Element {
       static get is() { return 'unity-webgl'; }
+      
       static get properties() {
         return {
           webGlContent: {
             type: String,
             value: 'content'
           },
-          placeHolder: {
+          unityMessage: {
             type: String,
-            value: 'default'
+            value: 'default',
+            observer: '_unityMessageChanged'
           },
+          ReadyNow: {
+            type: Boolean,
+            value: false
+          },
+          gameInstance: {
+            type: Object,
+          },
+          unityObject: String,
+          unityFunction: String,          
+
         };
       }
       ready() {
         super.ready();
         var contentpath=this.webGlContent+'/'+this.webGlContent+'.json';
-        var gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
-
+        console.debug('contentpath: '+contentpath)
+        this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
+        this.ReadyNow=true
+        console.log('finished loading')
+      }
+      _unityMessageChanged(newValue, oldValue) {
+        if (this.ReadyNow) {
+        this.gameInstance.SendMessage(unityObject,unityFunction,newValue);
+        //SendMessage(gameInstance,'upper',newValue);
+        }
       }
     }
 
