@@ -20,9 +20,13 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic unity-webgl demo</h3>
+      <canvas id='UnityContent'>
+
+      </canvas>
       <demo-snippet>
         <template>
-          <unity-webgl id='dog' web-gl-content='content/L1_LS_U4_G3' place-holder='excellent'></unity-webgl>
+          <!-- provde a path to your unity Build durectory in the web-gl-content attribute -->
+          <unity-webgl web-gl-content='content/L1_LS_U4_G3' place-holder='excellent'></unity-webgl>
         </template>
       </demo-snippet>
     </div>
