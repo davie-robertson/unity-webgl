@@ -51,7 +51,9 @@
         super.ready();
         var contentpath=this.webGlContent;
         console.debug('contentpath: '+contentpath)
-        this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
+        if (contentpath) {
+          this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
+      }
         this.ReadyNow=true
         console.log('finished loading')
       }
