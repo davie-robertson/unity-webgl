@@ -22,13 +22,14 @@
      */
     class UnityWebgl extends Polymer.Element {
       static get is() { return 'unity-webgl'; }
-      
+
       static get properties() {
         return {
           webGlContent: {
             type: String,
-            reflecttoattribute: true
-          
+            reflecttoattribute: true,
+            observer: '_unityContentChanged'
+
           },
           unityMessage: {
             type: String,
@@ -43,29 +44,37 @@
             type: Object,
           },
           unityObject: String,
-          unityFunction: String,          
+          unityFunction: String,
 
         };
       }
       ready() {
         super.ready();
-        var contentpath=this.webGlContent;
-        console.debug('contentpath: '+contentpath)
+        var contentpath = this.webGlContent;
+        console.debug('contentpath: ' + contentpath)
+
         if (contentpath) {
-          this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
-      }
-        this.ReadyNow=true
+          
+        }
+        this.ReadyNow = true
         console.log('finished loading')
       }
       _unityMessageChanged(newValue, oldValue) {
         if (this.ReadyNow) {
-        debug.log('msg called');
-  
+          console.log('msg called');
+        }
+      }
+
+      _unityContentChanged(newValue, oldValue) {
+        if (this.ReadyNow) {
+          var contentpath = this.webGlContent;
+          console.log('content path has changed from: ' + oldValue + ' to ' + newValue);
+          this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
         }
       }
     }
 
- 
+
     window.customElements.define(UnityWebgl.is, UnityWebgl);
   </script>
 </dom-module>
