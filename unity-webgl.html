@@ -29,36 +29,36 @@
             type: String,
             reflecttoattribute: true,
             observer: '_unityContentChanged'
-
           },
+
           unityMessage: {
             type: String,
             value: 'default',
             observer: '_unityMessageChanged'
           },
+
           ReadyNow: {
             type: Boolean,
             value: false
           },
+
           gameInstance: {
             type: Object,
           },
-          unityObject: String,
-          unityFunction: String,
 
+          unityObject: String,
+
+          unityFunction: String,
         };
       }
       ready() {
         super.ready();
         var contentpath = this.webGlContent;
         console.debug('contentpath: ' + contentpath)
-
-        if (contentpath) {
-          
-        }
         this.ReadyNow = true
         console.log('finished loading')
       }
+
       _unityMessageChanged(newValue, oldValue) {
         if (this.ReadyNow) {
           console.log('msg called');
