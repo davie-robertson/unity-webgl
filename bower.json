@@ -6,7 +6,7 @@
     "polymer": "Polymer/polymer#^2.0.0"
   },
   "extraDependencies": {
-    "unityloader": "UnityLoader.js"
+    "UnityLoader": "UnityLoader.js"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

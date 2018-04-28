@@ -54,10 +54,8 @@
       ready() {
         super.ready();
         var contentpath = this.webGlContent;
-        console.debug('contentpath: ' + contentpath)
         this.ReadyNow = true
         this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
-        console.log('finished loading')
       }
 
       _unityMessageChanged(newValue, oldValue) {
@@ -69,13 +67,10 @@
       _unityContentChanged(newValue, oldValue) {
         if (this.ReadyNow) {
           var contentpath = this.webGlContent;
-          console.log('content path has changed from: ' + oldValue + ' to ' + newValue);
           this.gameInstance = UnityLoader.instantiate(this.$.UnityContent, contentpath);
         }
       }
     }
-
-
     window.customElements.define(UnityWebgl.is, UnityWebgl);
   </script>
 </dom-module>
