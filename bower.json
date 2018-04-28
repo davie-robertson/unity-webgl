@@ -3,8 +3,10 @@
   "description": "an element to play Unity generated WebGL content",
   "main": "unity-webgl.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0",
-    "unityloader": "/UnityLoader.js"
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "extraDependencies": {
+    "unityloader": "UnityLoader.js"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
